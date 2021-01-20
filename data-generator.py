@@ -1,4 +1,4 @@
-# data generator
+# data-generator.py
 # this is used to make a csv of random time incremented data.
 
 # imports
