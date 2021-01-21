@@ -40,8 +40,8 @@ def run(position=None, start=None, end=None):
     csv_data = pd.read_csv('TAR_DIR_1/Static_Data.csv')
 
     # generate plot data
-    if len(sys.argv) > 1:    
-        if len(sys.argv) > 3:
+    if position != None:    
+        if end != None:
             # if more than 3 arguments
             plot_data = data_set(csv_data, position, start, end)
         else:
