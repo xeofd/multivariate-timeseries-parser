@@ -51,6 +51,8 @@ if __name__ == "__main__":
 
             usr_args.append(start_arg)
             usr_args.append(end_arg)
+        
+        print("generating using custom settings...")
     else:
         print("generating using defaults...")
 

@@ -38,7 +38,7 @@ def run():
                 print(str(_) + " rows done...")
             
             time = time_inc(time)
-            writer.writerow([randomiser(), randomiser(), randomiser(), time.time()])
+            writer.writerow([randomiser(), randomiser(), randomiser(), time])
         
         print("done!")
         print("file can be found at /TAR_DIR_1/Static_Data.csv")
