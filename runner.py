@@ -1,22 +1,21 @@
 # runner.py - this is the core python file, run this to start program
 
 # imports
-import sys
 import plotter
 import data_generator
+import user_input
+import monitor
 
 # start script
 
 if __name__ == "__main__":
 
-    # first check if user wants to generate random data and if so generate
-    has_input = False
+    # # begin directory monitor
+    # print("Starting monitor on ./TAR_DIR_1")
+    # monitor.run()
 
-    while has_input != True:
-        usr_input = input("Do you want to generate new data? (y/n): ")
-        if (usr_input == "y" or usr_input == "n"):
-            has_input = True
-            break
+    # first check if user wants to generate random data and if so generate
+    usr_input = user_input.validator("Do you want to generate new data? (y/n): ", ["y", "n"])
 
     if usr_input == "y":
         data_generator.run()
@@ -28,17 +27,11 @@ if __name__ == "__main__":
     # if none given it will run on defaults
 
     usr_args = []
-    has_input = False
-
-    while has_input != True:
-        usr_input = input("Do you want to plot specific data? (y/n): ")
-        if (usr_input == "y" or usr_input == "n"):
-            has_input = True
-            break
+    usr_input = user_input.validator("Do you want to plot specific data? (y/n): ", ["y", "n"])
 
     if usr_input == "y":
         # get position
-        postion_arg = input("Where do you want to pull rows from? (start/end/custom): ")
+        postion_arg = user_input.validator("Where do you want to pull rows from? (start/end/custom): ", ["start", "end", "custom"])
         usr_args.append(postion_arg)
 
         # get start or range
