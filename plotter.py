@@ -6,49 +6,48 @@ import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# read through data-set
-csv_data = pd.read_csv('TAR_DIR_1/Static_Data.csv')
+# watcher
+
 
 # break data into small chunks for plotter
 def data_set(data, postion=None, start=None, end=None):
     if postion == "start":
         # if specified postion is start pull {x} rows from start of data
-        return csv_data.head(int(start))
+        return data.head(int(start))
     elif postion == "end":
         # if specified postion is end pull {x} rows from end of data
-        return csv_data.tail(int(start))
+        return data.tail(int(start))
     elif postion == "custom":
         # if specified postion is custom pull rows between {x} & {y}
-        return csv_data.iloc[int(start):int(end)]
+        return data.iloc[int(start):int(end)]
     else:
         # default behaviour - pull first 10 rows of data
-        return csv_data.head(10)
+        return data.head(10)
 
 # generate plot
 def plot_gen(plot_data):
     ax = plt.gca()
 
-    plot_data.plot(kind="scatter", x="time", y="v1", ax=ax)
-    plot_data.plot(kind="scatter", x="time", y="v2", color="red", ax=ax)
-    plot_data.plot(kind="scatter", x="time", y="v3", color="green", ax=ax)
+    plot_data.plot(kind="line", x="time", y="v1", ax=ax)
+    plot_data.plot(kind="line", x="time", y="v2", color="red", ax=ax)
+    plot_data.plot(kind="line", x="time", y="v3", color="green", ax=ax)
     plt.show()
 
 # runner script
-def run(data):
+def run(position=None, start=None, end=None):
+
+    # read through data-set
+    csv_data = pd.read_csv('TAR_DIR_1/Static_Data.csv')
 
     # generate plot data
-    if len(sys.argv) > 1:
-        
+    if len(sys.argv) > 1:    
         if len(sys.argv) > 3:
-            plot_data = data_set(data, sys.argv[1], sys.argv[2], sys.argv[3])
+            # if more than 3 arguments
+            plot_data = data_set(csv_data, position, start, end)
         else:
-            plot_data = data_set(data, sys.argv[1], sys.argv[2])
-
+            plot_data = data_set(csv_data, position, start)
     else:
-        plot_data = data_set(data)
+        plot_data = data_set(csv_data)
 
     # build and open plot
     plot_gen(plot_data)
-
-# run script
-run(csv_data)
