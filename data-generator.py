@@ -22,6 +22,9 @@ def time_inc(prev_time):
 ## create & open csv file
 
 with open('TAR_DIR_1/Static_Data.csv', 'w', newline='') as file:
+
+    print("begin random data generator...")
+
     # set initial time
     time = datetime.datetime(2000, 1, 1, 00, 00, 00)
 
@@ -29,5 +32,11 @@ with open('TAR_DIR_1/Static_Data.csv', 'w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(["v1", "v2", "v3", "time"])
     for _ in range(1000000):
+        if _ % 100000 == 0:
+            print(str(_) + " rows done...")
+        
         time = time_inc(time)
         writer.writerow([randomiser(), randomiser(), randomiser(), time])
+    
+    print("done!")
+    print("file can be found at /TAR_DIR_1/Static_Data.csv")
