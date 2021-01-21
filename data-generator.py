@@ -36,7 +36,7 @@ with open('TAR_DIR_1/Static_Data.csv', 'w', newline='') as file:
             print(str(_) + " rows done...")
         
         time = time_inc(time)
-        writer.writerow([randomiser(), randomiser(), randomiser(), time])
+        writer.writerow([randomiser(), randomiser(), randomiser(), time.time()])
     
     print("done!")
     print("file can be found at /TAR_DIR_1/Static_Data.csv")
