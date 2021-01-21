@@ -31,7 +31,7 @@ if __name__ == "__main__":
     has_input = False
 
     while has_input != True:
-        usr_input = input("Do you want to input new? (y/n): ")
+        usr_input = input("Do you want to plot specific data? (y/n): ")
         if (usr_input == "y" or usr_input == "n"):
             has_input = True
             break
