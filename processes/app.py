@@ -1,24 +1,17 @@
 # runner.py - this is the core python file, run this to start program
 
 # imports
-import plotter
-import data_generator
-import user_input
-import monitor
+import processes.plotter as plotter
+import processes.data_generator as dg
+import processes.user_input as user_input
 
-# start script
-
-if __name__ == "__main__":
-
-    # # begin directory monitor
-    # print("Starting monitor on ./TAR_DIR_1")
-    # monitor.run()
+def run():
 
     # first check if user wants to generate random data and if so generate
     usr_input = user_input.validator("Do you want to generate new data? (y/n): ", ["y", "n"])
 
     if usr_input == "y":
-        data_generator.run()
+        dg.run()
 
     # generate plotter
     print("generating plot...")

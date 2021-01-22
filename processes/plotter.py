@@ -37,7 +37,7 @@ def plot_gen(plot_data):
 def run(position=None, start=None, end=None):
 
     # read through data-set
-    csv_data = pd.read_csv('TAR_DIR_1/Static_Data.csv')
+    csv_data = pd.read_csv('multivariate-timeseries-parser/../TAR_DIR_1/Static_Data.csv')
 
     # generate plot data
     if position != None:    

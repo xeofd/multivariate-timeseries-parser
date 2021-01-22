@@ -23,7 +23,7 @@ def time_inc(prev_time):
 def run():
 
     ## create & open csv file
-    with open('TAR_DIR_1/Static_Data.csv', 'w', newline='') as file:
+    with open('multivariate-timeseries-parser/../TAR_DIR_1/Static_Data.csv', 'w', newline='') as file:
 
         print("begin random data generator...")
 
@@ -41,4 +41,4 @@ def run():
             writer.writerow([randomiser(), randomiser(), randomiser(), time])
         
         print("done!")
-        print("file can be found at /TAR_DIR_1/Static_Data.csv")
+        print("file can be found at ../TAR_DIR_1/Static_Data.csv")
