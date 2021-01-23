@@ -4,6 +4,7 @@
 # imports 
 import sys
 import pandas as pd
+from pathlib import Path
 import matplotlib.pyplot as plt
 
 # watcher
@@ -36,8 +37,12 @@ def plot_gen(plot_data):
 # runner script
 def run(position=None, start=None, end=None):
 
+    # find path to csv across platform
+    path_parent = Path("data-generator.py").parent
+    path = str(path_parent) + "/TAR_DIR_1/Static_Data.csv"
+
     # read through data-set
-    csv_data = pd.read_csv('multivariate-timeseries-parser/../TAR_DIR_1/Static_Data.csv')
+    csv_data = pd.read_csv(path)
 
     # generate plot data
     if position != None:    

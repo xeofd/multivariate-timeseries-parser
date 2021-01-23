@@ -2,10 +2,11 @@
 # this is used to make a csv of random time incremented data.
 
 # imports
-from random import seed
-from random import random
 import csv
 import datetime
+from random import seed
+from random import random
+from pathlib import Path
 
 ## randomiser to get random variables
 seed(1)
@@ -22,8 +23,12 @@ def time_inc(prev_time):
 # build runner
 def run():
 
+    # find path to directory across platform
+    path_parent = Path("data-generator.py").parent
+    path = str(path_parent) + "/TAR_DIR_1/Static_Data.csv"
+
     ## create & open csv file
-    with open('multivariate-timeseries-parser/../TAR_DIR_1/Static_Data.csv', 'w', newline='') as file:
+    with open(path, 'w', newline='') as file:
 
         print("begin random data generator...")
 

@@ -1,9 +1,9 @@
 # main.py - this is core runner file. run this to start the app
 
 # imports
-import processes.app as app
-import processes.monitor as monitor
 import time
+import processes.app as app
+from processes.monitor import Monitor
 
 # start the app
 if __name__ == "__main__":
@@ -16,4 +16,5 @@ if __name__ == "__main__":
 
     print("Starting directory monitor...")
     print("Monitoring /TAR_DIR_1...")
+    monitor = Monitor()
     monitor.run()
