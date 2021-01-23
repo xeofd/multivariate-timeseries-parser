@@ -35,11 +35,11 @@ def plot_gen(plot_data):
     plt.show()
 
 # runner script
-def run(position=None, start=None, end=None):
+def run(directory, file_name, position=None, start=None, end=None):
 
     # find path to csv across platform
     path_parent = Path("data-generator.py").parent
-    path = str(path_parent) + "/TAR_DIR_1/Static_Data.csv"
+    path = str(path_parent) + "/" + directory + "/" + file_name
 
     # read through data-set
     csv_data = pd.read_csv(path)
