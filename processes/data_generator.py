@@ -47,3 +47,20 @@ def run():
         
         print("done!")
         print("file can be found at ../TAR_DIR_1/Static_Data.csv")
+
+def auto_generator(read_from, write_to):
+
+    # set data to write
+    write_data = []
+
+    with open(read_from, "r", newline="") as file:
+
+        reader = csv.reader(file, delimiter="\n")
+        for row in reader:
+            write_data.append(row)
+
+    # set file to write to
+    with open(write_to, "w", newline="") as file:
+        writer = csv.writer(file)
+        for _ in range(301):
+            writer.writerow([write_data[_]])

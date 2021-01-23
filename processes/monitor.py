@@ -18,12 +18,13 @@ class Monitor:
     # set directory
     WATCH_DIR = path
 
-    def __init__(self):
+    def __init__(self, prev_data):
         self.observer = Observer()
+        self.prev_data = prev_data
 
     def run(self):
         # set event handler
-        event_handler = Handler()
+        event_handler = Handler(self.prev_data)
 
         # set observer schedule
         self.observer.schedule(event_handler, self.WATCH_DIR, recursive=True)
@@ -33,6 +34,7 @@ class Monitor:
 
         try:
             while True:
+                # every 5 seconds check for changes
                 time.sleep(5)
         except:
             self.observer.stop()
@@ -43,16 +45,19 @@ class Monitor:
 # build handler class
 class Handler(FileSystemEventHandler):
 
-    @staticmethod
-    def on_any_event(event):
+    def __init__(self, prev_data):
+        self.prev_data = prev_data
+
+    def on_any_event(self, event):
         
         # if directory based event ignore
         if event.is_directory:
             return None
+
         elif event.event_type == 'created':
             ## when create even called stop the monitor and run the file created event func
-            event_func.create(event.src_path)
+            print("File created!")
 
         elif event.event_type == 'modified':
             ## when modify event called stop the monitor and run the file modified function
-            event_func.modify(event.src_path)
+            event_func.on_modify(self.prev_data, event.src_path)

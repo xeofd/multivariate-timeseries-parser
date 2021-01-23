@@ -56,3 +56,19 @@ def run(directory, file_name, position=None, start=None, end=None):
 
     # build and open plot
     plot_gen(plot_data)
+
+# {monitor function} - on data modify event call this
+def data_update(source_data, new_data):
+
+    # read both sources of data and combine
+    source_data = pd.read_csv(source_data)
+    new_data = pd.read_csv(new_data)
+
+    data_sets = [source_data, new_data]
+    combo = pd.concat(data_sets)
+
+    # plot new data - last 20 items in the new data set
+    plot_data = data_set(combo, "end", 20)
+
+    # build new plot
+    plot_gen(plot_data)
